@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 // components
 import Todo from '../components/Todo';
@@ -21,7 +22,7 @@ const TodoList = () => {
       ? getTodos(token)
           .then(res => setTodoList(res.data))
           .catch(err => alert(err.response.data.message))
-      : navigate('/signin');
+      : navigate('/');
   }, [isSuccess]);
 
   const [todoList, setTodoList] = useState([]);
@@ -41,12 +42,13 @@ const TodoList = () => {
   };
 
   return (
-    <div>
+    <Wrapper>
+      <H1>To do list</H1>
       <form>
-        <input type="text" value={newTodo} onChange={todoHandler} />
-        <button type="submit" onClick={submitHandler}>
-          할일 생성
-        </button>
+        <Input type="text" value={newTodo} onChange={todoHandler} />
+        <Button type="submit" onClick={submitHandler}>
+          추가
+        </Button>
       </form>
 
       <ul>
@@ -63,8 +65,36 @@ const TodoList = () => {
           );
         })}
       </ul>
-    </div>
+    </Wrapper>
   );
 };
 
 export default TodoList;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 20px;
+`;
+
+const H1 = styled.h1``;
+
+const Input = styled.input`
+  width: 200px;
+  font-size: 13px;
+  padding: 5px;
+  margin: 10px;
+`;
+const Button = styled.button`
+  width: 50px;
+  padding: 10px;
+  margin: 3px;
+  font-size: 10px;
+  color: white;
+  background-color: black;
+  border: none;
+  cursor: pointer;
+`;
