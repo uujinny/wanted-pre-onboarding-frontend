@@ -108,4 +108,7 @@ const Button = styled.button`
   background-color: black;
   border: none;
   cursor: pointer;
+  &:disabled {
+    opacity: 0.5;
+  }
 `;

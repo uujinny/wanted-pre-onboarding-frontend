@@ -35,9 +35,11 @@ const TodoList = () => {
 
   const submitHandler = event => {
     event.preventDefault();
-
     postTodo({ todo: newTodo }, token)
-      .then(() => setIsSuccess(true))
+      .then(() => {
+        setIsSuccess(true);
+        setNewTodo('');
+      })
       .catch(err => alert(err.response.data.message));
   };
 

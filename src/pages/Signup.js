@@ -68,11 +68,15 @@ const Signup = () => {
         onChange={passwordConfirmHandler}
         placeholder="비밀번호 확인"
       />
-      {!passwordConfirmed ? (
+      {!!confirmPassword && !passwordConfirmed && (
         <Span className="checking">비밀번호가 일치하지 않습니다.</Span>
-      ) : null}
+      )}
 
-      <Button type="submit" onClick={submitHandler} disabled={!isValid}>
+      <Button
+        type="submit"
+        onClick={submitHandler}
+        disabled={!isValid || !passwordConfirmed}
+      >
         가입하기
       </Button>
     </Wrapper>
@@ -114,6 +118,9 @@ const Button = styled.button`
   background-color: black;
   border: none;
   cursor: pointer;
+  &:disabled {
+    opacity: 0.5;
+  }
 `;
 
 const Span = styled.span`
