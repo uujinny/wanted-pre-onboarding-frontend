@@ -23,7 +23,7 @@ const TodoList = () => {
           .then(res => setTodoList(res.data))
           .catch(err => alert(err.response.data.message))
       : navigate('/');
-  }, [isSuccess]);
+  }, [isSuccess, navigate, token]);
 
   const [todoList, setTodoList] = useState([]);
 

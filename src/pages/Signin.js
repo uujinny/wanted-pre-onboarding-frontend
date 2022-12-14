@@ -12,7 +12,7 @@ const Signin = () => {
 
   useEffect(() => {
     token && navigate('/todo');
-  }, []);
+  }, [navigate, token]);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
