@@ -18,6 +18,7 @@
 <br>
 
 ## 배포링크
+<http://pre-onboarding-uujinny.netlify.app>
 
 <br>
 
